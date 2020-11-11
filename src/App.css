@@ -1,0 +1,30 @@
+body{
+  background: #000000;  
+}
+
+nav{
+  margin-bottom: 20px;
+  background: #333333;
+}
+
+.navbar-brand{
+  color: #cddc39;
+  transition: 2s;
+}
+
+.navbar-brand:hover{
+  color: #ffffff;
+  transition: 1s;
+}
+
+.nav-link{
+  color: #000000;
+  background: #cddc39;
+  transition: 2s;
+}
+
+.nav-link:hover{
+  color: #cddc39;
+  background: #ffffff;
+  transition: 1s;
+}
