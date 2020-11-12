@@ -82,11 +82,13 @@ class home extends Component {
 
                 <div className="container mb-5">
                     
-                    <form onSubmit={this.searchUsername}>
+                    <form onSubmit={this.searchUsername} className="mb-5">
                         <input type="text" class="form-control userInput p-3 mb-2" id="userInput" value={this.state.currentUsername} onChange={(e) => this.setState({ currentUsername: e.target.value})} placeholder="Search Username" />
 
                         <button type="submit" class="form-control usernameButton">Search</button>
                     </form>
+
+                    
 
                     
                     <div className="profileCard mt-5" id="profileCard">
