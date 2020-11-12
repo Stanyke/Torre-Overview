@@ -158,7 +158,7 @@ class jobs extends Component {
                         {
                             filteredJobsDetails.results ? 
 
-                            filteredJobsDetails.results.map(jobs => <div className="row mb-5 pt-3" style={filteredJobDesign}>
+                            filteredJobsDetails.results.map(jobs => <div className="row mb-5 pt-3 col-12" style={filteredJobDesign}>
                                 <div className="col-4">
                                     {jobs.organizations.length ?
                                         <img src={jobs.organizations[0].picture} style={jobImgStyle} alt="Job Cover" />

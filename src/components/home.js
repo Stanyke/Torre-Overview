@@ -180,10 +180,10 @@ class home extends Component {
                             filteredPeopleDetails.results ?
 
                             filteredPeopleDetails.results.map(person => 
-                            <div className="row mb-5 pt-3" style={filteredPeopleDesign}>
+                            <div className="row mb-5 pt-3 col-12" style={filteredPeopleDesign}>
 
                                 <div className="col-md-4">
-                                    <img src={person.picture} alt="User Cover" />
+                                    <img src={person.picture} class="userImage" alt="User Cover" />
                                 </div>
 
                                 <div className="col-md-8">
