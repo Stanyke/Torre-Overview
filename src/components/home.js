@@ -242,7 +242,7 @@ class home extends Component {
             filteredPeopleDetails: {}
         })
 
-        axios.get(`https://cors-anywhere.herokuapp.com/fetch/https://torre.bio/api/bios/${document.getElementById("userInput").value}`,{
+        axios.get(`https://cors-anywhere.herokuapp.com/https://torre.bio/api/bios/${document.getElementById("userInput").value}`,{
             headers: {'Access-Control-Allow-Origin': '*'}
         })
         .then(response => {
