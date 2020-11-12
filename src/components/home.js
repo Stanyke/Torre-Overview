@@ -80,7 +80,7 @@ class home extends Component {
                     </ul>
                 </nav>
 
-                <div className="container">
+                <div className="container mb-5">
                     
                     <form onSubmit={this.searchUsername}>
                         <input type="text" class="form-control userInput p-3 mb-2" id="userInput" value={this.state.currentUsername} onChange={(e) => this.setState({ currentUsername: e.target.value})} placeholder="Search Username" />
