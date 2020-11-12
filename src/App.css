@@ -57,12 +57,20 @@ nav{
 
 .userImage, .jobImage{
   height: 200px;
-  width: 100%
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 @media screen and (max-width: 767px)
 {
   .userImage, .jobImage{
     height: 400px
+  }
+}
+
+@media screen and (max-width: 499px)
+{
+  .userImage, .jobImage{
+    height: 300px
   }
 }

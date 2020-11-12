@@ -53,7 +53,6 @@ class jobs extends Component {
 
         const { jobDetails, errorMsg, filteredJobsDetails } = this.state;
         const errorColor = {"color": "#cddc39"}
-        const imgStyle = {width: '100%', height: '200px'}
         const boldTitle = {"color": "#cddc39"}
         const jobImgStyle = {width: '100%', height: '200px'}
         const filteredJobDesign = {"border": "2px solid whitesmoke"}
