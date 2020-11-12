@@ -118,8 +118,8 @@ class jobs extends Component {
 
                                     {
                                         jobDetails.organizations.length ?
-                                        jobDetails.organizations.map(organization =>
-                                            <div className="mb-2"><b style={boldTitle} className="pr-3">Organization:</b> {organization.name}
+                                        jobDetails.organizations.map((organization, index) =>
+                                            <div key={index} className="mb-2"><b style={boldTitle} className="pr-3">Organization:</b> {organization.name}
                                             {
                                                 organization.size ? `| Size (${organization.size})`
                                                 : null
@@ -158,7 +158,7 @@ class jobs extends Component {
                         {
                             filteredJobsDetails.results ? 
 
-                            filteredJobsDetails.results.map(jobs => <div className="row mb-5 pt-3 col-12" style={filteredJobDesign}>
+                            filteredJobsDetails.results.map((jobs, index) => <div key={index} className="row mb-5 pt-3 col-12" style={filteredJobDesign}>
                                 <div className="col-4">
                                     {jobs.organizations.length ?
                                         <img src={jobs.organizations[0].picture} style={jobImgStyle} alt="Job Cover" />

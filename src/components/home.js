@@ -135,8 +135,8 @@ class home extends Component {
 
                                     {
                                         userDetails.person.links.length ?
-                                        userDetails.person.links.map(link => 
-                                            <div className="mb-2"><b style={boldTitle} className="pr-3">Other Link:</b> <a href={link.address} target="_blank" rel="noreferrer">{link.address}</a></div>
+                                        userDetails.person.links.map((link, index) => 
+                                            <div key={index} className="mb-2"><b style={boldTitle} className="pr-3">Other Link:</b> <a href={link.address} target="_blank" rel="noreferrer">{link.address}</a></div>
                                         ) : null
                                     }
                                     
@@ -179,8 +179,8 @@ class home extends Component {
                         {
                             filteredPeopleDetails.results ?
 
-                            filteredPeopleDetails.results.map(person => 
-                            <div className="row mb-5 pt-3 col-12" style={filteredPeopleDesign}>
+                            filteredPeopleDetails.results.map((person, index) => 
+                            <div key={index} className="row mb-5 pt-3 col-12" style={filteredPeopleDesign}>
 
                                 <div className="col-md-4">
                                     <img src={person.picture} class="userImage" alt="User Cover" />
