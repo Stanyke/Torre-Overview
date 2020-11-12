@@ -13,7 +13,12 @@ class home extends Component {
         this.state = {
              currentUsername: "Stanyke",
              userDetails: {},
-             errorMsg: ""
+             errorMsg: "",
+
+             peopleOffset: "",
+             peopleSize: "",
+             peopleAggregate: "",
+             filteredPeopleDetails: {}
         }
 
         toast.configure()
@@ -62,10 +67,11 @@ class home extends Component {
     
     render() {
 
-        const { userDetails, currentUsername, errorMsg } = this.state;
+        const { userDetails, filteredPeopleDetails, errorMsg } = this.state;
         const errorColor = {"color": "#cddc39"}
-        const imgStyle = {width: '100%', height: '350px'}
+        const imgStyle = {width: '100%', height: '200px'}
         const boldTitle = {"color": "#cddc39"}
+        const filteredPeopleDesign = {"border": "2px solid whitesmoke"}
 
         return (
             <div>
@@ -88,7 +94,26 @@ class home extends Component {
                         <button type="submit" class="form-control usernameButton">Search</button>
                     </form>
 
-                    
+                    <div align="center"><u><h3>Filter People</h3></u></div>
+                    <form onSubmit={this.filterPeople}>
+                        <div className="row">
+
+                            <div className="col-md-4 col-sm-4 col-4">
+                                <input type="number" class="form-control userInput p-3 mb-2" value={this.state.peopleOffset} onChange={(e) => this.setState({ peopleOffset: e.target.value})} placeholder="Starting Page" min="1" required />
+                            </div>
+
+                            <div className="col-md-4 col-sm-4 col-4">
+                                <input type="number" class="form-control userInput p-3 mb-2" value={this.state.peopleSize} onChange={(e) => this.setState({ peopleSize: e.target.value})} placeholder="Number of People" min="1" required />
+                            </div>
+
+                            <div className="col-md-4 col-sm-4 col-4">
+                                <input type="number" class="form-control userInput p-3 mb-2" value={this.state.peopleAggregate} onChange={(e) => this.setState({ peopleAggregate: e.target.value})} placeholder="People Aggregate" min="1" required />
+                            </div>
+                        </div>
+
+
+                        <button type="submit" class="form-control usernameButton">Filter People</button>
+                    </form>
 
                     
                     <div className="profileCard mt-5" id="profileCard">
@@ -118,7 +143,7 @@ class home extends Component {
                                     
 
                                     <br/>
-                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Bio:</b> {userDetails.person.summaryOfBio}</div>
+                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Bio:</b> {userDetails.person.summaryOfBio ? userDetails.person.summaryOfBio : "Empty"}</div>
 
                                     <br/>
                                     <div className="mb-2"><b style={boldTitle} className="pr-3">Location:</b> {userDetails.person.location.name}</div>
@@ -151,6 +176,44 @@ class home extends Component {
                             : null
                         }
 
+
+                        {
+                            filteredPeopleDetails.results ?
+
+                            filteredPeopleDetails.results.map(person => 
+                            <div className="row mb-5 pt-3" style={filteredPeopleDesign}>
+
+                                <div className="col-md-4">
+                                    <img src={person.picture} style={imgStyle} alt="User Cover" />
+                                </div>
+
+                                <div className="col-md-8">
+                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Name:</b> {person.name}</div>
+
+                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Title:</b> {person.professionalHeadline}</div>
+
+                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Username:</b> {person.username}</div>
+
+                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Location:</b> {person.locationName}</div>
+
+                                    {
+                                        person.openTo.length ?
+
+                                        <div className="mb-2"><b style={boldTitle} className="pr-3">Interested In:</b>
+                                            {
+                                                person.openTo.map(interest => `${interest}, ` )
+                                            }
+                                        </div>:null
+                                    }
+                                    
+                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Remoter:</b> {person.remoter === true ? "Yes" : "No"}</div>
+
+                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Verified:</b> {person.verified === true ? "Yes" : "No"}</div>
+                                    
+                                </div>
+                            </div>) : null
+                        }
+
                         {
                             errorMsg ? <div align="center" className="col-12" style={errorColor}>{errorMsg}</div>
                             : null
@@ -176,7 +239,8 @@ class home extends Component {
         
         this.setState({
             userDetails: {},
-            errorMsg: ''
+            errorMsg: '',
+            filteredPeopleDetails: {}
         })
 
         axios.get(`https://thingproxy.freeboard.io/fetch/https://torre.bio/api/bios/${document.getElementById("userInput").value}`,{
@@ -212,6 +276,53 @@ class home extends Component {
             })
                 
             console.log("There was a problem while getting user, possibly because user does not exist.")
+        })
+    }
+
+    filterPeople = (event) => {
+        event.preventDefault()
+
+        var beatLoaders = document.getElementById("beatLoaders");
+        beatLoaders.style.display = "block"
+        
+        this.setState({
+            userDetails: {},
+            errorMsg: '',
+            filteredPeopleDetails: {}
+        })
+
+        let peopleData = {
+            offset: this.state.jobsOffset,
+            size: this.state.jobsSize,
+            aggregate: this.state.jobsAggregate
+        }
+
+        fetch(`https://search.torre.co/people/_search/?[offset=${this.state.peopleOffset}&size=${this.state.peopleSize}&aggregate=${this.state.peopleAggregate}]`, {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(peopleData)
+        })
+        .then( res => res.json() )
+        .then( data => {
+            beatLoaders.style.display = "none";
+            console.log(data)
+            this.setState({
+                filteredPeopleDetails: data
+            })
+        })
+        .catch( err => {
+            beatLoaders.style.display = "none";
+
+            toast.error("People were not found, possibly because of network issue.", {position: toast.POSITION.TOP_LEFT, autoClose: 5000});
+
+            this.setState({
+                errorMsg: "People were not found, possibly because of network issue."
+            })
+
+            console.log("People were not found, possibly because of network issue.")
         })
     }
 }

@@ -53,9 +53,10 @@ class jobs extends Component {
 
         const { jobDetails, errorMsg, filteredJobsDetails } = this.state;
         const errorColor = {"color": "#cddc39"}
-        const imgStyle = {width: '100%', height: '350px'}
+        const imgStyle = {width: '100%', height: '200px'}
         const boldTitle = {"color": "#cddc39"}
         const jobImgStyle = {width: '100%', height: '200px'}
+        const filteredJobDesign = {"border": "2px solid whitesmoke"}
 
         return (
             <div>
@@ -83,15 +84,15 @@ class jobs extends Component {
                         <div className="row">
 
                             <div className="col-md-4 col-sm-4 col-4">
-                                <input type="number" class="form-control userInput p-3 mb-2" id="jobsOffset" value={this.state.jobsOffset} onChange={(e) => this.setState({ jobsOffset: e.target.value})} placeholder="Starting Page" min="1" required />
+                                <input type="number" class="form-control userInput p-3 mb-2" value={this.state.jobsOffset} onChange={(e) => this.setState({ jobsOffset: e.target.value})} placeholder="Starting Page" min="1" required />
                             </div>
 
                             <div className="col-md-4 col-sm-4 col-4">
-                                <input type="number" class="form-control userInput p-3 mb-2" id="jobsSize" value={this.state.jobsSize} onChange={(e) => this.setState({ jobsSize: e.target.value})} placeholder="Number of Jobs" min="1" required />
+                                <input type="number" class="form-control userInput p-3 mb-2" value={this.state.jobsSize} onChange={(e) => this.setState({ jobsSize: e.target.value})} placeholder="Number of Jobs" min="1" required />
                             </div>
 
                             <div className="col-md-4 col-sm-4 col-4">
-                                <input type="number" class="form-control userInput p-3 mb-2" id="jobsAggregate" value={this.state.jobsAggregate} onChange={(e) => this.setState({ jobsAggregate: e.target.value})} placeholder="Jobs Aggregate" min="1" required />
+                                <input type="number" class="form-control userInput p-3 mb-2" value={this.state.jobsAggregate} onChange={(e) => this.setState({ jobsAggregate: e.target.value})} placeholder="Jobs Aggregate" min="1" required />
                             </div>
                         </div>
 
@@ -158,7 +159,7 @@ class jobs extends Component {
                         {
                             filteredJobsDetails.results ? 
 
-                            filteredJobsDetails.results.map(jobs => <div className="row mb-5">
+                            filteredJobsDetails.results.map(jobs => <div className="row mb-5 pt-3" style={filteredJobDesign}>
                                 <div className="col-4">
                                     {jobs.organizations.length ?
                                         <img src={jobs.organizations[0].picture} style={jobImgStyle} alt="Job Cover" />
@@ -286,13 +287,13 @@ class jobs extends Component {
         .catch( err => {
             beatLoaders.style.display = "none";
 
-            toast.error("Job opportunities not found.", {position: toast.POSITION.TOP_LEFT, autoClose: 5000});
+            toast.error("Job opportunities not found, possibly because of network issue.", {position: toast.POSITION.TOP_LEFT, autoClose: 5000});
 
             this.setState({
-                errorMsg: "Job opportunities not found."
+                errorMsg: "Job opportunities not found, possibly because of network issue."
             })
 
-            console.log("Job opportunities not found.")
+            console.log("Job opportunities not found, possibly because of network issue.")
         })
     }
 }
