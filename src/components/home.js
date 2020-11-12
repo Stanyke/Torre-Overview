@@ -69,7 +69,6 @@ class home extends Component {
 
         const { userDetails, filteredPeopleDetails, errorMsg } = this.state;
         const errorColor = {"color": "#cddc39"}
-        const imgStyle = {width: '100%', height: '200px'}
         const boldTitle = {"color": "#cddc39"}
         const filteredPeopleDesign = {"border": "2px solid whitesmoke"}
 
@@ -123,7 +122,7 @@ class home extends Component {
                             <div className="row">
 
                                 <div className="col-md-4">
-                                    <img src={userDetails.person.picture} style={imgStyle} alt="User Cover" />
+                                    <img src={userDetails.person.picture} className="userImage" alt="User Cover" />
                                 </div>
 
                                 <div className="col-md-8">
@@ -243,7 +242,7 @@ class home extends Component {
             filteredPeopleDetails: {}
         })
 
-        axios.get(`https://thingproxy.freeboard.io/fetch/https://torre.bio/api/bios/${document.getElementById("userInput").value}`,{
+        axios.get(`https://cors-anywhere.herokuapp.com/fetch/https://torre.bio/api/bios/${document.getElementById("userInput").value}`,{
             headers: {'Access-Control-Allow-Origin': '*'}
         })
         .then(response => {

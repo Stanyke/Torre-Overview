@@ -109,7 +109,7 @@ class jobs extends Component {
 
                                 <div className="col-md-4">
                                     {jobDetails.attachments.length ?
-                                    <img src={jobDetails.attachments[0].address} style={imgStyle} alt="Job Cover" />
+                                    <img src={jobDetails.attachments[0].address} className="jobImage" alt="Job Cover" />
                                     : <h2 align="center">No Image Available For Preview</h2> }
                                 </div>
 
