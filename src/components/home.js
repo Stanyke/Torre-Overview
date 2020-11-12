@@ -27,7 +27,7 @@ class home extends Component {
     componentDidMount(){
         var beatLoaders = document.getElementById("beatLoaders");
 
-        axios.get(`https://torre.bio/api/bios/${this.state.currentUsername}`,{
+        axios.get(`https://cors-anywhere.herokuapp.com/https://torre.bio/api/bios/${this.state.currentUsername}`,{
             headers: {'Access-Control-Allow-Origin': '*'}
         })
         .then(response => {
