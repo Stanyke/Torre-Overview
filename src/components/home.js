@@ -183,7 +183,7 @@ class home extends Component {
                             <div className="row mb-5 pt-3" style={filteredPeopleDesign}>
 
                                 <div className="col-md-4">
-                                    <img src={person.picture} style={imgStyle} alt="User Cover" />
+                                    <img src={person.picture} alt="User Cover" />
                                 </div>
 
                                 <div className="col-md-8">
