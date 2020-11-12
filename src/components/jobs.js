@@ -73,7 +73,7 @@ class jobs extends Component {
                 <div className="container mb-5">
 
                     <form onSubmit={this.searchJob} className="mb-5">
-                        <input type="text" class="form-control userInput p-3 mb-2" id="userInput" value={this.state.currentJob} onChange={(e) => this.setState({ currentJob: e.target.value})} placeholder="Search Job" />
+                        <input type="text" class="form-control userInput p-3 mb-2" id="userInput" value={this.state.currentJob} onChange={(e) => this.setState({ currentJob: e.target.value})} placeholder="Search Job" required />
 
                         <button type="submit" class="form-control usernameButton">Search Job</button>
                     </form>
