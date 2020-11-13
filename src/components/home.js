@@ -27,7 +27,7 @@ class home extends Component {
     componentDidMount(){
         var beatLoaders = document.getElementById("beatLoaders");
 
-        axios.get(`https://thingproxy.freeboard.io/fetch/https://bio.torre.co/api/bios/${this.state.currentUsername}`,{
+        axios.get(`https://cors-anywhere.herokuapp.com/https://torre.bio/api/bios/${this.state.currentUsername}`,{
             headers: {'Access-Control-Allow-Origin': '*'}
         })
         .then(response => {
@@ -248,7 +248,7 @@ class home extends Component {
             filteredPeopleDetails: {}
         })
 
-        axios.get(`https://thingproxy.freeboard.io/fetch/https://bio.torre.co/api/bios/${document.getElementById("userInput").value}`,{
+        axios.get(`https://cors-anywhere.herokuapp.com/https://torre.bio/api/bios/${document.getElementById("userInput").value}`,{
             headers: {'Access-Control-Allow-Origin': '*'}
         })
         .then(response => {
