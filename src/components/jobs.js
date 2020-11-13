@@ -49,6 +49,26 @@ class jobs extends Component {
 
     }
 
+    maxPay = (pay) => {
+        if(pay === null)
+        {
+            return ""
+        }
+        else{
+            return " - "+pay
+        }
+    }
+
+    minPay = (pay) => {
+        if(pay === null || pay === '')
+        {
+            return "Not Available"
+        }
+        else{
+            return pay
+        }
+    }
+
     render() {
 
         const { jobDetails, errorMsg, filteredJobsDetails } = this.state;
@@ -173,16 +193,18 @@ class jobs extends Component {
                                     </div>
 
                                     <div className="col-8">
-                                        <div className="mb-2"><b style={boldTitle} className="pr-3">Company:</b> {jobs.organizations[0].name}</div>
+                                        <div className="mb-2"><b style={boldTitle} className="pr-3">Company:</b> {jobs.organizations[0] ? jobs.organizations[0].name : "Not Available"}</div>
 
                                         <div className="mb-2"><b style={boldTitle} className="pr-3">Job:</b> {jobs.objective}</div>
 
                                         <div className="mb-2"><b style={boldTitle} className="pr-3">Type:</b> {jobs.type}</div>
 
                                         <div className="mb-2"><b style={boldTitle} className="pr-3">Paying:</b> 
+                                        
                                         {
-                                            jobs.compensation.data ?
-                                            `${jobs.compensation.data.currency} ${jobs.compensation.data.minAmount} - ${jobs.compensation.data.maxAmount} | ${jobs.compensation.data.periodicity}`
+
+                                            jobs.compensation ?
+                                            `${jobs.compensation.data ? jobs.compensation.data.currency : ""}  ${jobs.compensation.data !== null ? this.minPay(jobs.compensation.data.minAmount) : "Not Available"} ${jobs.compensation.data ? this.maxPay(jobs.compensation.data.maxAmount) : ""} ${jobs.compensation.data ? "| "+ jobs.compensation.data.periodicity : ""}`
                                             : "Not Available"
                                         }
                                         </div>
