@@ -27,7 +27,7 @@ class home extends Component {
     componentDidMount(){
         var beatLoaders = document.getElementById("beatLoaders");
 
-        axios.get(`https://cors-anywhere.herokuapp.com/https://torre.bio/api/bios/${this.state.currentUsername}`,{
+        axios.get(`https://thingproxy.freeboard.io/fetch/https://bio.torre.co/api/bios/${this.state.currentUsername}`,{
             headers: {'Access-Control-Allow-Origin': '*'}
         })
         .then(response => {
@@ -142,7 +142,7 @@ class home extends Component {
                                     
 
                                     <br/>
-                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Bio:</b> {userDetails.person.summaryOfBio ? userDetails.person.summaryOfBio : "Empty"}</div>
+                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Bio:</b> {userDetails.person.summaryOfBio ? userDetails.person.summaryOfBio : "Not Available"}</div>
 
                                     <br/>
                                     <div className="mb-2"><b style={boldTitle} className="pr-3">Location:</b> {userDetails.person.location.name}</div>
@@ -184,35 +184,37 @@ class home extends Component {
                             filteredPeopleDetails.results ?
 
                             filteredPeopleDetails.results.map((person, index) => 
-                            <div key={index} className="row mb-5 pt-3 col-12" style={filteredPeopleDesign}>
+                            <div key={index} className="mb-5 pt-3 col-12" style={filteredPeopleDesign}>
 
-                                <div className="col-md-4">
-                                    <img src={person.picture} class="userImage" alt="User Cover" />
-                                </div>
+                                <div className="row">
+                                    <div className="col-md-4">
+                                        <img src={person.picture} class="userImage" alt="User Cover" />
+                                    </div>
 
-                                <div className="col-md-8">
-                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Name:</b> {person.name}</div>
+                                    <div className="col-md-8">
+                                        <div className="mb-2"><b style={boldTitle} className="pr-3">Name:</b> {person.name}</div>
 
-                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Title:</b> {person.professionalHeadline}</div>
+                                        <div className="mb-2"><b style={boldTitle} className="pr-3">Title:</b> {person.professionalHeadline}</div>
 
-                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Username:</b> {person.username}</div>
+                                        <div className="mb-2"><b style={boldTitle} className="pr-3">Username:</b> {person.username}</div>
 
-                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Location:</b> {person.locationName}</div>
+                                        <div className="mb-2"><b style={boldTitle} className="pr-3">Location:</b> {person.locationName}</div>
 
-                                    {
-                                        person.openTo.length ?
+                                        {
+                                            person.openTo.length ?
 
-                                        <div className="mb-2"><b style={boldTitle} className="pr-3">Interested In:</b>
-                                            {
-                                                person.openTo.map(interest => `${interest}, ` )
-                                            }
-                                        </div>:null
-                                    }
-                                    
-                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Remoter:</b> {person.remoter === true ? "Yes" : "No"}</div>
+                                            <div className="mb-2"><b style={boldTitle} className="pr-3">Interested In:</b>
+                                                {
+                                                    person.openTo.map(interest => `${interest}, ` )
+                                                }
+                                            </div>:null
+                                        }
+                                        
+                                        <div className="mb-2"><b style={boldTitle} className="pr-3">Remoter:</b> {person.remoter === true ? "Yes" : "No"}</div>
 
-                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Verified:</b> {person.verified === true ? "Yes" : "No"}</div>
-                                    
+                                        <div className="mb-2"><b style={boldTitle} className="pr-3">Verified:</b> {person.verified === true ? "Yes" : "No"}</div>
+                                        
+                                    </div>
                                 </div>
                             </div>) : null
                         }
@@ -246,7 +248,7 @@ class home extends Component {
             filteredPeopleDetails: {}
         })
 
-        axios.get(`https://cors-anywhere.herokuapp.com/https://torre.bio/api/bios/${document.getElementById("userInput").value}`,{
+        axios.get(`https://thingproxy.freeboard.io/fetch/https://bio.torre.co/api/bios/${document.getElementById("userInput").value}`,{
             headers: {'Access-Control-Allow-Origin': '*'}
         })
         .then(response => {
