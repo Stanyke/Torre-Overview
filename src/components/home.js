@@ -171,7 +171,7 @@ class home extends Component {
                                     <div className="mb-2"><b style={boldTitle} className="pr-3">Account Created:</b> {userDetails.person.created}</div>
 
                                     <div className="mb-2">
-                                        <a href={`https://bio.torre.co/en/${userDetails.person.publicId}`} target="_blank" rel="noreferrer"><button type="button" class="btn form-control viewProfile">View Profile</button></a>
+                                        <a href={`https://bio.torre.co/en/${userDetails.person.publicId}`} target="_blank" rel="noreferrer"><button type="button" class="btn form-control viewProfile">View Profile On Torre</button></a>
                                     </div>
                                     
                                 </div>
