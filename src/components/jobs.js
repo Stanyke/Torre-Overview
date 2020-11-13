@@ -162,42 +162,45 @@ class jobs extends Component {
                         {
                             filteredJobsDetails.results ? 
 
-                            filteredJobsDetails.results.map((jobs, index) => <div key={index} className="row mb-5 pt-3 col-12" style={filteredJobDesign}>
-                                <div className="col-4">
-                                    {jobs.organizations.length ?
-                                        <img src={jobs.organizations[0].picture} style={jobImgStyle} alt="Job Cover" />
-                                        : <h2 align="center">No Image Available For Preview</h2>
-                                    }
-                                </div>
+                            filteredJobsDetails.results.map((jobs, index) => <div key={index} className="mb-5 pt-3 col-12" style={filteredJobDesign}>
 
-                                <div className="col-8">
-                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Company:</b> {jobs.organizations[0].name}</div>
-
-                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Job:</b> {jobs.objective}</div>
-
-                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Type:</b> {jobs.type}</div>
-
-                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Paying:</b> 
-                                    {
-                                        jobs.compensation.data ?
-                                        `${jobs.compensation.data.currency} ${jobs.compensation.data.minAmount} - ${jobs.compensation.data.maxAmount} | ${jobs.compensation.data.periodicity}`
-                                        : "Not Available"
-                                    }
+                                <div className="row">
+                                    <div className="col-4">
+                                        {jobs.organizations.length ?
+                                            <img src={jobs.organizations[0].picture} style={jobImgStyle} alt="Job Cover" />
+                                            : <h2 align="center">No Image Available For Preview</h2>
+                                        }
                                     </div>
 
-                                    {
-                                        jobs.remote === true ? <div className="mb-2"><b style={boldTitle} className="pr-3">Remote:</b> Available</div>
-                                        : <div className="mb-2"><b style={boldTitle} className="pr-3">Remote:</b> Not Available</div>
-                                    }
+                                    <div className="col-8">
+                                        <div className="mb-2"><b style={boldTitle} className="pr-3">Company:</b> {jobs.organizations[0].name}</div>
 
-                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Job ID:</b> {jobs.id}</div>
+                                        <div className="mb-2"><b style={boldTitle} className="pr-3">Job:</b> {jobs.objective}</div>
 
-                                    <div className="mb-2"><b style={boldTitle} className="pr-3">Deadline:</b> {jobs.deadline ? jobs.deadline : "Not Available"}</div>
+                                        <div className="mb-2"><b style={boldTitle} className="pr-3">Type:</b> {jobs.type}</div>
 
-                                </div>
+                                        <div className="mb-2"><b style={boldTitle} className="pr-3">Paying:</b> 
+                                        {
+                                            jobs.compensation.data ?
+                                            `${jobs.compensation.data.currency} ${jobs.compensation.data.minAmount} - ${jobs.compensation.data.maxAmount} | ${jobs.compensation.data.periodicity}`
+                                            : "Not Available"
+                                        }
+                                        </div>
 
-                                <div className="mb-2 col-12">
-                                    <a href={`https://torre.co/jobs/${jobs.id}`} target="_blank" rel="noreferrer"><button type="button" class="btn form-control viewJob">View Job On Torre</button></a>
+                                        {
+                                            jobs.remote === true ? <div className="mb-2"><b style={boldTitle} className="pr-3">Remote:</b> Available</div>
+                                            : <div className="mb-2"><b style={boldTitle} className="pr-3">Remote:</b> Not Available</div>
+                                        }
+
+                                        <div className="mb-2"><b style={boldTitle} className="pr-3">Job ID:</b> {jobs.id}</div>
+
+                                        <div className="mb-2"><b style={boldTitle} className="pr-3">Deadline:</b> {jobs.deadline ? jobs.deadline : "Not Available"}</div>
+
+                                    </div>
+
+                                    <div className="mb-2 col-12">
+                                        <a href={`https://torre.co/jobs/${jobs.id}`} target="_blank" rel="noreferrer"><button type="button" class="btn form-control viewJob">View Job On Torre</button></a>
+                                    </div>
                                 </div>
                             </div>)
                             
