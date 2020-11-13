@@ -3,6 +3,10 @@ This is an overview of the available APIs from Torre.co
 
 This web application consumes a couple of APIs provided by Torre to its users/developers to make job lookouts easier as there're numerous people and jobs available in their platform/API.
 
+## Links (url)
+- Profile/Homepage url: https://torre-overview.herokuapp.com
+- Jobs page url: https://torre-overview.herokuapp.com/jobs
+
 ## How it works
 
 1. The homepage is loadedautomatically, displaying my profile deatils by default using my username on Torre (my profile username is **Stanyke**).
