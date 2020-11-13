@@ -50,7 +50,7 @@ nav{
   transition: 2s;
 }
 
-.viewProfile{
+.viewProfile, .viewJob{
   background: #cddc39;
   color: #333333;
 }

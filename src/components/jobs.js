@@ -150,6 +150,10 @@ class jobs extends Component {
                                     jobDetails.deadline ? `${jobDetails.deadline}` : "Not Available"
                                     }</div>
 
+                                    <div className="mb-2">
+                                        <a href={`https://torre.co/jobs/${this.state.currentJob}`} target="_blank" rel="noreferrer"><button type="button" class="btn form-control viewJob">View Job On Torre</button></a>
+                                    </div>
+
                                 </div>
                             </div>
                             : null
@@ -189,6 +193,11 @@ class jobs extends Component {
                                     <div className="mb-2"><b style={boldTitle} className="pr-3">Job ID:</b> {jobs.id}</div>
 
                                     <div className="mb-2"><b style={boldTitle} className="pr-3">Deadline:</b> {jobs.deadline ? jobs.deadline : "Not Available"}</div>
+
+                                </div>
+
+                                <div className="mb-2 col-12">
+                                    <a href={`https://torre.co/jobs/${jobs.id}`} target="_blank" rel="noreferrer"><button type="button" class="btn form-control viewJob">View Job On Torre</button></a>
                                 </div>
                             </div>)
                             

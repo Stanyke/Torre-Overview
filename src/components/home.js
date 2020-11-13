@@ -215,6 +215,10 @@ class home extends Component {
                                         <div className="mb-2"><b style={boldTitle} className="pr-3">Verified:</b> {person.verified === true ? "Yes" : "No"}</div>
                                         
                                     </div>
+
+                                    <div className="mb-2 col-12">
+                                        <a href={`https://bio.torre.co/en/${person.username}`} target="_blank" rel="noreferrer"><button type="button" class="btn form-control viewProfile">View Profile On Torre</button></a>
+                                    </div>
                                 </div>
                             </div>) : null
                         }
