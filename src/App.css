@@ -50,6 +50,11 @@ nav{
   transition: 2s;
 }
 
+.viewProfile{
+  background: #cddc39;
+  color: #333333;
+}
+
 .usernameButton:hover{
   background: #000000;
   transition: 1s;

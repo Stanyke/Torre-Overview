@@ -53,13 +53,13 @@ class home extends Component {
         .catch((err) => {
             beatLoaders.style.display = "none";
             
-            toast.error("There was a problem while getting user, possibly because user does not exist.", {position: toast.POSITION.TOP_LEFT, autoClose: 5000});
+            toast.error("There was a problem while getting user, possibly because network issues or user does not exist.", {position: toast.POSITION.TOP_LEFT, autoClose: 5000});
 
             this.setState({
-                errorMsg: "There was a problem while getting user, possibly because user does not exist."
+                errorMsg: "There was a problem while getting user, possibly because network issues or user does not exist."
             })
                 
-            console.log("There was a problem while getting user, possibly because user does not exist.")
+            console.log("There was a problem while getting user, possibly because network issues or user does not exist.")
         })
         
       
@@ -169,6 +169,10 @@ class home extends Component {
                                     
 
                                     <div className="mb-2"><b style={boldTitle} className="pr-3">Account Created:</b> {userDetails.person.created}</div>
+
+                                    <div className="mb-2">
+                                        <a href={`https://bio.torre.co/en/${userDetails.person.publicId}`} target="_blank" rel="noreferrer"><button type="button" class="btn form-control viewProfile">View Profile</button></a>
+                                    </div>
                                     
                                 </div>
                             </div>
@@ -268,13 +272,13 @@ class home extends Component {
         .catch((err) => {
             beatLoaders.style.display = "none";
             
-            toast.error("There was a problem while getting user, possibly because user does not exist.", {position: toast.POSITION.TOP_LEFT, autoClose: 5000});
+            toast.error("There was a problem while getting user, possibly because network issues or user does not exist.", {position: toast.POSITION.TOP_LEFT, autoClose: 5000});
 
             this.setState({
-                errorMsg: "There was a problem while getting user, possibly because user does not exist."
+                errorMsg: "There was a problem while getting user, possibly because network issues or user does not exist."
             })
                 
-            console.log("There was a problem while getting user, possibly because user does not exist.")
+            console.log("There was a problem while getting user, possibly because network issues or user does not exist.")
         })
     }
 
